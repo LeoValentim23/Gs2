@@ -1,8 +1,8 @@
 package Notridame.com.br.Gs.menu;
 
 import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
+import Notridame.com.br.Gs.service.TriagemUtil;
 import Notridame.com.br.Gs.model.*;
-
 
 public class Triagem {
 
@@ -16,6 +16,10 @@ public class Triagem {
             InformacoesSintoma informacoesSintoma = TriagemUtil.obterInformacoesSintoma();
             pulseira pulseira = TriagemUtil.calcularUrgenciaComBaseNasInformacoes(cpfUsuarioLogado, informacoesSintoma);
             System.out.println("Pulseira Atribuída: " + pulseira.getClass().getSimpleName());
+
+
+            TriagemUtil.adicionarHistorico(cpfUsuarioLogado, informacoesSintoma, pulseira);
+
         } else {
             System.out.println("Paciente não encontrado.");
         }

@@ -1,6 +1,7 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.service;
 
 import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
+import Notridame.com.br.Gs.model.*;
 
 import java.util.Scanner;
 
@@ -52,5 +53,27 @@ public class TriagemUtil {
             scanner.next();
         }
         return scanner.nextInt();
+    }
+
+
+    public static void adicionarHistorico(String cpfPaciente, InformacoesSintoma informacoesSintoma, pulseira pulseira) {
+        int nivelUrgencia = mapearIntensidadeParaNivelUrgencia(pulseira);
+
+        ProcessoTriagemDAO.inserirHistorico(cpfPaciente, informacoesSintoma.getTipoSintoma().name(),
+                informacoesSintoma.getIntensidadeSintoma(), nivelUrgencia);
+    }
+
+    private static int mapearIntensidadeParaNivelUrgencia(pulseira pulseira) {
+        if (pulseira instanceof NaoUrgente) {
+            return 1;
+        } else if (pulseira instanceof PoucoUrgente) {
+            return 2;
+        } else if (pulseira instanceof Urgente) {
+            return 3;
+        } else if (pulseira instanceof MuitoUrgente) {
+            return 4;
+        } else {
+            return 5;
+        }
     }
 }

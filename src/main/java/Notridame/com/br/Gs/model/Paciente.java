@@ -1,6 +1,7 @@
 package Notridame.com.br.Gs.model;
 
 
+
 public class Paciente{
     private String nome;
     private int idade;

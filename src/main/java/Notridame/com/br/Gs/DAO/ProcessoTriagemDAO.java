@@ -1,6 +1,7 @@
 package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.conexao.ConnectionManager;
+import Notridame.com.br.Gs.model.Paciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProcessoTriagemDAO {
+
+    private static Notridame.com.br.Gs.model.Paciente Paciente;
 
     public static String obterEnderecoDoPaciente(String cpfUsuarioLogado) {
         String endereco = null;
@@ -47,5 +50,26 @@ public class ProcessoTriagemDAO {
         }
 
         return idade;
+    }
+    public static void inserirHistorico(String cpfPaciente, String tipoSintoma, int intensidadeSintoma, int nivelUrgencia) {
+        String sql = "INSERT INTO tb_atendimento (cpf_paciente, tipo_sintoma, intensidade_sintoma, id_urgencia) VALUES (?, ?, ?, ?)";
+
+        try (Connection conexao = ConnectionManager.getConnection();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setString(1, cpfPaciente);
+            ps.setString(2, tipoSintoma);
+            ps.setInt(3, intensidadeSintoma);
+            ps.setInt(4, nivelUrgencia);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Paciente obterPacientePorCpf(String cpfPaciente) {
+        return Paciente;
     }
 }
