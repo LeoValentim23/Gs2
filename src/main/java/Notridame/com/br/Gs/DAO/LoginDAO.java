@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.service;
+package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.conexao.ConnectionManager;
 
@@ -7,10 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginService {
+public class LoginDAO {
     private static ConnectionManager connectionManager = new ConnectionManager();
 
-    public LoginService(ConnectionManager connectionManager) {
+    public LoginDAO(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
     }
 

@@ -1,6 +1,6 @@
 package Notridame.com.br.Gs.menu;
 
-import Notridame.com.br.Gs.service.LoginService;
+import Notridame.com.br.Gs.DAO.LoginDAO;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class Login {
     private static Scanner scanner;
 
     public static boolean realizarLogin(String senha, String cpf) {
-        if (LoginService.verificarCadastro(cpf, senha)) {
+        if (LoginDAO.verificarCadastro(cpf, senha)) {
             System.out.println("Login bem-sucedido. Bem-vindo!");
 
             cpfUsuarioLogado = cpf;

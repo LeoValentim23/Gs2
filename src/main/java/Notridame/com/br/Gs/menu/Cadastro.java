@@ -24,9 +24,6 @@ public class Cadastro {
         System.out.print("Sexo: ");
         String sexo = scanner.nextLine();
 
-        System.out.print("Plano de Saúde: ");
-        String planoSaude = scanner.nextLine();
-
         System.out.print("Endereço: ");
         String endereco = scanner.nextLine();
 
@@ -34,7 +31,7 @@ public class Cadastro {
         String idade = scanner.nextLine();
 
 
-        Paciente novoPaciente = new Paciente(nome, Integer.parseInt(idade), sexo, endereco, cpf, senha, Integer.parseInt(planoSaude));
+        Paciente novoPaciente = new Paciente(nome, Integer.parseInt(idade), sexo, endereco, cpf, senha);
 
 
         ConnectionManager connectionManager = new ConnectionManager();

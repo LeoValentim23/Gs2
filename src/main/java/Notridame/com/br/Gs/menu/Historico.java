@@ -1,6 +1,8 @@
 package Notridame.com.br.Gs.menu;
 
-import Notridame.com.br.Gs.service.HistoricoService;
+import Notridame.com.br.Gs.DAO.HistoricoDAO;
+
+import java.util.List;
 
 public class Historico {
 
@@ -9,6 +11,12 @@ public class Historico {
 
         String cpfUsuarioLogado = Login.cpfUsuarioLogado;
 
-        HistoricoService.getHistoricoMedico(cpfUsuarioLogado);
+
+        List<String> historicoList = HistoricoDAO.getHistoricoMedico(cpfUsuarioLogado);
+
+
+        for (String historico : historicoList) {
+            System.out.println(historico);
+        }
     }
 }

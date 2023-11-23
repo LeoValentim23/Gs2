@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.service;
+package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.menu.Login;
 

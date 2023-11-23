@@ -8,18 +8,18 @@ public class Paciente{
     private String endereco;
     private String cpf;
     private String senha;
-    private int planoSaude;
 
 
 
-    public Paciente(String nome, int idade, String sexo , String endereco, String cpf, String senha , int planoSaude) {
+
+    public Paciente(String nome, int idade, String sexo , String endereco, String cpf, String senha ) {
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
         this.endereco = endereco;
         this.cpf = cpf;
         this.senha = senha;
-        this.planoSaude = planoSaude;
+
     }
 
 
@@ -45,9 +45,6 @@ public class Paciente{
 
     public String getSenha() {
         return senha;
-    }
-    public int getPlanoSaude() {
-        return planoSaude;
     }
 
 
