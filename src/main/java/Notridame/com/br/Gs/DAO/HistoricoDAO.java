@@ -21,7 +21,9 @@ public class HistoricoDAO {
                 "a.nome_alergia, " +
                 "m.nome_medicamento, " +
                 "hf.nome_doenca, " +
-                "hm.id_historico_medico, " +
+                "hm.id_historico_familiar, " +
+                "hm.id_medicamento, " +
+                "hm.id_alergia, " +
                 "hm.cpf_paciente " +
                 "FROM " +
                 "tb_historico_medico hm " +
@@ -46,13 +48,11 @@ public class HistoricoDAO {
                 String nomeAlergia = resultSet.getString("nome_alergia");
                 String nomeMedicamento = resultSet.getString("nome_medicamento");
                 String doencaFamilia = resultSet.getString("nome_doenca");
-                int idHistoricoMedico = resultSet.getInt("id_historico_medico");
 
                 // Adiciona as informações a uma lista
                 historicoList.add("Nome da Alergia: " + nomeAlergia +
                         "\nNome do Medicamento: " + nomeMedicamento +
                         "\nDoença da Família: " + doencaFamilia +
-                        "\nID do Histórico Médico: " + idHistoricoMedico +
                         "\n------------");
             }
         } catch (SQLException e) {
