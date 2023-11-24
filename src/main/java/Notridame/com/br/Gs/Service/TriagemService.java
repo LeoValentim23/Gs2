@@ -8,14 +8,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class TriagemService {
 
+    private final TriagemUtil triagemUtil;
+
+    public TriagemService(TriagemUtil triagemUtil) {
+        this.triagemUtil = triagemUtil;
+    }
+
     public String realizarTriagem(String cpfUsuarioLogado) {
         String endereco = ProcessoTriagemDAO.obterEnderecoDoPaciente(cpfUsuarioLogado);
 
         if (endereco != null) {
-            InformacoesSintoma informacoesSintoma = TriagemUtil.obterInformacoesSintoma();
-            pulseira pulseira = TriagemUtil.calcularUrgenciaComBaseNasInformacoes(cpfUsuarioLogado, informacoesSintoma);
+            InformacoesSintoma informacoesSintoma = triagemUtil.obterInformacoesSintoma();
+            pulseira pulseira = triagemUtil.calcularUrgenciaComBaseNasInformacoes(cpfUsuarioLogado, informacoesSintoma);
 
-            TriagemUtil.adicionarHistorico(cpfUsuarioLogado, informacoesSintoma, pulseira);
+            triagemUtil.adicionarHistorico(cpfUsuarioLogado, informacoesSintoma, pulseira);
 
             return "Triagem realizada com sucesso! Pulseira atribuída: " + pulseira.getClass().getSimpleName();
         } else {

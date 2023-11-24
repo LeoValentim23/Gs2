@@ -10,7 +10,7 @@ public class Historico {
         System.out.println("Bem-vindo ao Menu de Histórico");
 
         RestTemplate restTemplate = new RestTemplate();
-        List<String> historicoList = restTemplate.getForObject("http://localhost:8080/historico/mostrar", List.class);
+        List<String> historicoList = restTemplate.getForObject("http://localhost:8050/historico/mostrar", List.class);
 
         for (String historico : historicoList) {
             System.out.println(historico);

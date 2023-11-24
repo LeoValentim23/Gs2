@@ -6,12 +6,12 @@ import Notridame.com.br.Gs.model.pulseira.*;
 import Notridame.com.br.Gs.model.model.TipoSintoma;
 import org.springframework.stereotype.Component;
 
-import java.util.Scanner;  // Adicionei esta importação
+import java.util.Scanner;
 
 @Component
 public class TriagemUtil {
 
-    private Scanner scanner;  // Adicionei este membro
+    private Scanner scanner;
 
     public InformacoesSintoma obterInformacoesSintoma() {
         System.out.println("Tipos de Sintomas:");

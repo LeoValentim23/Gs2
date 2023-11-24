@@ -10,7 +10,7 @@ public class HistoricoMedico {
         System.out.println("Menu Histórico de Sintomas");
 
         RestTemplate restTemplate = new RestTemplate();
-        List<String> historicoList = restTemplate.getForObject("http://localhost:8080/historicoMedico/mostrar", List.class);
+        List<String> historicoList = restTemplate.getForObject("http://localhost:8050/historicoMedico/mostrar", List.class);
 
         for (String historico : historicoList) {
             System.out.println(historico);
