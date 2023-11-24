@@ -1,28 +1,25 @@
-package Notridame.com.br.Gs.menu;
+package Notridame.com.br.Gs.Service;
 
 import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
 import Notridame.com.br.Gs.model.Historico.InformacoesSintoma;
 import Notridame.com.br.Gs.model.pulseira.pulseira;
-import Notridame.com.br.Gs.service.TriagemUtil;
+import org.springframework.stereotype.Service;
 
-public class Triagem {
+@Service
+public class TriagemService {
 
-    public static void mostrarTriagem() {
-        String cpfUsuarioLogado = Login.cpfUsuarioLogado;
-
+    public String realizarTriagem(String cpfUsuarioLogado) {
         String endereco = ProcessoTriagemDAO.obterEnderecoDoPaciente(cpfUsuarioLogado);
 
         if (endereco != null) {
-            System.out.println("Endereço do Paciente: " + endereco);
             InformacoesSintoma informacoesSintoma = TriagemUtil.obterInformacoesSintoma();
             pulseira pulseira = TriagemUtil.calcularUrgenciaComBaseNasInformacoes(cpfUsuarioLogado, informacoesSintoma);
-            System.out.println("Pulseira Atribuída: " + pulseira.getClass().getSimpleName());
-
 
             TriagemUtil.adicionarHistorico(cpfUsuarioLogado, informacoesSintoma, pulseira);
 
+            return "Triagem realizada com sucesso! Pulseira atribuída: " + pulseira.getClass().getSimpleName();
         } else {
-            System.out.println("Paciente não encontrado.");
+            return "Paciente não encontrado.";
         }
     }
 }

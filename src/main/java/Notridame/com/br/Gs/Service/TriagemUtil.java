@@ -1,33 +1,35 @@
-package Notridame.com.br.Gs.service;
+package Notridame.com.br.Gs.Service;
 
 import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
 import Notridame.com.br.Gs.model.Historico.InformacoesSintoma;
-import Notridame.com.br.Gs.model.model.TipoSintoma;
 import Notridame.com.br.Gs.model.pulseira.*;
+import Notridame.com.br.Gs.model.model.TipoSintoma;
+import org.springframework.stereotype.Component;
 
-import java.util.Scanner;
+import java.util.Scanner;  // Adicionei esta importação
 
-
-
+@Component
 public class TriagemUtil {
 
-    public static InformacoesSintoma obterInformacoesSintoma() {
+    private Scanner scanner;  // Adicionei este membro
+
+    public InformacoesSintoma obterInformacoesSintoma() {
         System.out.println("Tipos de Sintomas:");
         for (TipoSintoma sintoma : TipoSintoma.values()) {
             System.out.println(sintoma.ordinal() + 1 + ". " + sintoma.name());
         }
         System.out.print("Escolha o número correspondente ao tipo de sintoma: ");
-        int tipoSintomaEscolhido = TriagemUtil.lerInteiroDoUsuario();
+        int tipoSintomaEscolhido = lerInteiroDoUsuario();
 
         TipoSintoma tipoSintoma = TipoSintoma.values()[tipoSintomaEscolhido - 1];
 
         System.out.print("Intensidade do Sintoma (1 a 10): ");
-        int intensidadeSintoma = TriagemUtil.lerInteiroDoUsuario();
+        int intensidadeSintoma = lerInteiroDoUsuario();
 
         return new InformacoesSintoma(tipoSintoma, intensidadeSintoma);
     }
 
-    public static pulseira calcularUrgenciaComBaseNasInformacoes(String cpfPaciente, InformacoesSintoma informacoesSintoma) {
+    public pulseira calcularUrgenciaComBaseNasInformacoes(String cpfPaciente, InformacoesSintoma informacoesSintoma) {
         int idade = ProcessoTriagemDAO.obterIdadeDoPaciente(cpfPaciente);
         TipoSintoma tipoSintoma = informacoesSintoma.getTipoSintoma();
         int intensidadeSintoma = informacoesSintoma.getIntensidadeSintoma();
@@ -47,9 +49,17 @@ public class TriagemUtil {
         }
     }
 
+    public void adicionarHistorico(String cpfPaciente, InformacoesSintoma informacoesSintoma, pulseira pulseira) {
+        int nivelUrgencia = mapearIntensidadeParaNivelUrgencia(pulseira);
 
-    public static int lerInteiroDoUsuario() {
-        Scanner scanner = new Scanner(System.in);
+        ProcessoTriagemDAO.inserirHistorico(cpfPaciente, informacoesSintoma.getTipoSintoma().name(),
+                informacoesSintoma.getIntensidadeSintoma(), nivelUrgencia);
+    }
+
+    private int lerInteiroDoUsuario() {
+        if (scanner == null) {
+            scanner = new Scanner(System.in);
+        }
         while (!scanner.hasNextInt()) {
             System.out.println("Por favor, insira um número válido.");
             scanner.next();
@@ -57,15 +67,7 @@ public class TriagemUtil {
         return scanner.nextInt();
     }
 
-
-    public static void adicionarHistorico(String cpfPaciente, InformacoesSintoma informacoesSintoma, pulseira pulseira) {
-        int nivelUrgencia = mapearIntensidadeParaNivelUrgencia(pulseira);
-
-        ProcessoTriagemDAO.inserirHistorico(cpfPaciente, informacoesSintoma.getTipoSintoma().name(),
-                informacoesSintoma.getIntensidadeSintoma(), nivelUrgencia);
-    }
-
-    private static int mapearIntensidadeParaNivelUrgencia(pulseira pulseira) {
+    private int mapearIntensidadeParaNivelUrgencia(pulseira pulseira) {
         if (pulseira instanceof NaoUrgente) {
             return 1;
         } else if (pulseira instanceof PoucoUrgente) {

@@ -1,6 +1,6 @@
-package Notridame.com.br.Gs.menu;
+package Notridame.com.br.Gs.Service;
 
-import Notridame.com.br.Gs.DAO.HistoricoDAO;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -9,11 +9,8 @@ public class Historico {
     public static void mostrarHistorico() {
         System.out.println("Bem-vindo ao Menu de Histórico");
 
-        String cpfUsuarioLogado = Login.cpfUsuarioLogado;
-
-
-        List<String> historicoList = HistoricoDAO.getHistoricoMedico(cpfUsuarioLogado);
-
+        RestTemplate restTemplate = new RestTemplate();
+        List<String> historicoList = restTemplate.getForObject("http://localhost:8080/historico/mostrar", List.class);
 
         for (String historico : historicoList) {
             System.out.println(historico);
