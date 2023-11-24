@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HistoricoMedico {
 
-    public static void mostrarHistoricoMedico() {
+    public static List<String> mostrarHistoricoMedico() {
         System.out.println("Menu Histórico de Sintomas");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -15,5 +15,6 @@ public class HistoricoMedico {
         for (String historico : historicoList) {
             System.out.println(historico);
         }
+        return historicoList;
     }
 }

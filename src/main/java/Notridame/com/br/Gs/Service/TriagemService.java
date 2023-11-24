@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TriagemService {
 
-    private final TriagemUtil triagemUtil;
+    private static TriagemUtil triagemUtil = new TriagemUtil();
 
     public TriagemService(TriagemUtil triagemUtil) {
         this.triagemUtil = triagemUtil;
     }
 
-    public String realizarTriagem(String cpfUsuarioLogado) {
+    public static String realizarTriagem(String cpfUsuarioLogado) {
         String endereco = ProcessoTriagemDAO.obterEnderecoDoPaciente(cpfUsuarioLogado);
 
         if (endereco != null) {

@@ -1,46 +1,48 @@
+
 package Notridame.com.br.Gs.menu;
 
-import Notridame.com.br.Gs.DAO.LoginDAO;
+import Notridame.com.br.Gs.Service.LoginService;
 import Notridame.com.br.Gs.model.model.Paciente;
-import org.springframework.beans.factory.annotation.Autowired;
+import Notridame.com.br.Gs.security.SessionManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
+
+import com.sun.net.httpserver.HttpExchange;
+
 
 @Controller
 public class LoginController {
 
-    @Autowired
-    private AuthenticationSuccessHandler customAuthenticationSuccessHandler;
-
     @PostMapping("/login")
-    public ResponseEntity<String> realizarLogin(@RequestBody Paciente paciente, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String senha = paciente.getSenha();
+    public ResponseEntity<String> realizarLogin(@RequestBody Paciente paciente, HttpServletRequest request) throws ServletException, IOException {
         String cpf = paciente.getCpf();
+        String senha = paciente.getSenha();
 
-        if (LoginDAO.verificarCadastro(cpf, senha)) {
+        String loginResult = LoginService.realizarLogin(cpf, senha);
+
+        if (loginResult.startsWith("Login realizado")) {
             HttpSession session = request.getSession();
             session.setAttribute("cpfUsuarioLogado", cpf);
-
-            // O redirecionamento ocorrerá automaticamente pelo AuthenticationSuccessHandler
-            return ResponseEntity.status(HttpStatus.OK).body("Login bem-sucedido. Bem-vindo!");
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login falhou. CPF ou senha incorretos.");
         }
+
+        return ResponseEntity.status(HttpStatus.OK).body(loginResult);
     }
 
-    public static String getCpfUsuarioLogado(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return (String) session.getAttribute("cpfUsuarioLogado");
+
+    public static String getCpfUsuarioLogado(HttpExchange exchange) {
+        Map<String, Object> session = SessionManager.getSession(exchange);
+        if (session != null) {
+            return (String) session.get("cpfUsuarioLogado");
+        }
+        return null;
     }
 }
