@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.menu;
+package Notridame.com.br.Gs.security;
 
 import Notridame.com.br.Gs.DAO.CpfLogado;
 import org.springframework.security.core.Authentication;

@@ -7,7 +7,6 @@ public class Sintoma {
     private TipoSintoma tipo;
     private int intensidade;
 
-    private int Idade;
 
 
     public Sintoma(TipoSintoma tipo, int intensidade) {
