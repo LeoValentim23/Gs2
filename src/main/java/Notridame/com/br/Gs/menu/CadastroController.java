@@ -34,7 +34,7 @@ public class CadastroController {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao realizar o cadastro.");
             }
         } catch (Exception e) {
-            // Log em caso de exceção
+
             System.out.println("Erro inesperado ao processar a requisição: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro inesperado ao processar a requisição.");
         }
