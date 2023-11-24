@@ -4,9 +4,7 @@ import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
 import Notridame.com.br.Gs.model.Historico.InformacoesSintoma;
 import Notridame.com.br.Gs.model.model.Paciente;
 import Notridame.com.br.Gs.model.model.TipoSintoma;
-import Notridame.com.br.Gs.model.pulseira.CalculadoraPontuacao;
-import Notridame.com.br.Gs.model.pulseira.MuitoUrgente;
-import Notridame.com.br.Gs.model.pulseira.pulseira;
+import Notridame.com.br.Gs.model.pulseira.*;
 
 public class TriagemService {
 
