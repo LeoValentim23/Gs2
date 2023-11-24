@@ -63,6 +63,5 @@ public class HistoricoDAO {
         return historicoList;
     }
 
-    public void adicionarHistoricoMedico(HistoricoMedico historicoMedico) {
-    }
+
 }
