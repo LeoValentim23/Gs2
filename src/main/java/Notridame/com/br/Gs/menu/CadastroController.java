@@ -21,12 +21,21 @@ public class CadastroController {
         try {
             ConnectionManager connectionManager = new ConnectionManager();
 
+
+            System.out.println("Inserindo no banco de dados...");
+
             if (PacienteDAO.inserirNoBancoDeDados(novoPaciente, connectionManager)) {
+
+                System.out.println("Cadastro realizado com sucesso!");
                 return ResponseEntity.status(HttpStatus.CREATED).body("Cadastro realizado com sucesso!");
             } else {
+
+                System.out.println("Erro ao realizar o cadastro.");
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao realizar o cadastro.");
             }
         } catch (Exception e) {
+            // Log em caso de exceção
+            System.out.println("Erro inesperado ao processar a requisição: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro inesperado ao processar a requisição.");
         }
     }

@@ -1,3 +1,5 @@
+package Notridame.com.br.Gs.application;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -18,7 +20,7 @@ public class GsApplication {
 		int port = 8050;
 		HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 
-		server.createContext("/hello", new MyHandler());
+
 		server.createContext("/cadastro", new CadastroHandler());
 
 		server.setExecutor(null);
@@ -27,13 +29,6 @@ public class GsApplication {
 		System.out.println("Server started on port " + port);
 	}
 
-	static class MyHandler implements HttpHandler {
-		@Override
-		public void handle(HttpExchange exchange) throws IOException {
-			// Your implementation for handling "/hello" requests
-			// (Add logic here if needed)
-		}
-	}
 
 	static class CadastroHandler implements HttpHandler {
 		@Override
@@ -47,3 +42,4 @@ public class GsApplication {
 		}
 	}
 }
+
