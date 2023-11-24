@@ -33,4 +33,8 @@ public class PacienteDAO {
         }
     }
 
+    // Novo método para inserção de paciente
+    public static boolean cadastrarPaciente(Paciente paciente, ConnectionManager connectionManager) {
+        return inserirNoBancoDeDados(paciente, connectionManager);
+    }
 }

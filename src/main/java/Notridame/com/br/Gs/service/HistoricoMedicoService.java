@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Notridame.com.br.Gs.DAO.HistoricoMedicoDAO;
+import Notridame.com.br.Gs.model.HistoricoSintomas;
 
 import java.util.List;
 
@@ -14,7 +15,13 @@ public class HistoricoMedicoService {
     private HistoricoMedicoDAO historicoMedicoDAO;
 
     public List<String> obterHistoricoSintomas(String cpfUsuarioLogado) {
-        // Implemente a lógica para recuperar o histórico de sintomas usando o DAO
         return historicoMedicoDAO.getHistoricoSintomas(cpfUsuarioLogado);
     }
+
+    public void adicionarHistoricoSintomas(HistoricoSintomas historicoSintomas) {
+        // Implemente a lógica para adicionar o histórico de sintomas usando o DAO
+        historicoMedicoDAO.adicionarHistoricoSintomas(historicoSintomas);
+    }
+
+
 }

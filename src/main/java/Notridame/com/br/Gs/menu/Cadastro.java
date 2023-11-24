@@ -31,19 +31,16 @@ public class Cadastro {
         String idade = scanner.nextLine();
 
 
-        Paciente novoPaciente = new Paciente(nome, Integer.parseInt(idade), sexo, endereco, cpf, senha);
+                Paciente novoPaciente = new Paciente(nome, Integer.parseInt(idade), sexo, endereco, cpf, senha);
 
+                ConnectionManager connectionManager = new ConnectionManager();
 
-        ConnectionManager connectionManager = new ConnectionManager();
+                if (PacienteDAO.inserirNoBancoDeDados(novoPaciente, connectionManager)) {
+                    System.out.println("Cadastro realizado com sucesso!");
+                } else {
+                    System.out.println("Erro ao realizar o cadastro.");
+                }
 
-
-        if (PacienteDAO.inserirNoBancoDeDados(novoPaciente, connectionManager)) {
-            System.out.println("Cadastro realizado com sucesso!");
-        } else {
-            System.out.println("Erro ao realizar o cadastro.");
+                Menu.mostrarMenuPrincipal(scanner);
+            }
         }
-
-
-        Menu.mostrarMenuPrincipal(scanner);
-    }
-}

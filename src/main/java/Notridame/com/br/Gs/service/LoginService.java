@@ -1,11 +1,12 @@
 package Notridame.com.br.Gs.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Notridame.com.br.Gs.DAO.LoginDAO;
 import Notridame.com.br.Gs.menu.MenuUsuario;
+
+import java.util.Scanner;
 
 @Service
 public class LoginService {
@@ -23,7 +24,11 @@ public class LoginService {
 
             System.out.println(cpfUsuarioLogado);
 
-            menuUsuario.mostrarMenuUsuario(); // Note que o scanner não é mais necessário aqui
+            // Crie uma instância de Scanner (ou use uma instância existente, se aplicável)
+            Scanner scanner = new Scanner(System.in);
+
+            // Passe o Scanner para o método mostrarMenuUsuario
+            menuUsuario.mostrarMenuUsuario(scanner);
 
             return true;
         } else {

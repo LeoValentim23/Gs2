@@ -1,6 +1,7 @@
 package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.conexao.ConnectionManager;
+import Notridame.com.br.Gs.model.HistoricoSintomas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,5 +48,8 @@ public class HistoricoMedicoDAO {
         }
 
         return historicoList;
+    }
+
+    public void adicionarHistoricoSintomas(HistoricoSintomas historicoSintomas) {
     }
 }

@@ -1,5 +1,6 @@
 package Notridame.com.br.Gs.service;
 
+import Notridame.com.br.Gs.conexao.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,10 @@ public class CadastroService {
     @Autowired
     private PacienteDAO pacienteDAO;
 
+    @Autowired
+    private ConnectionManager connectionManager; // Certifique-se de ter a instância adequada de ConnectionManager aqui
+
     public boolean cadastrarPaciente(Paciente paciente) {
-        // Implemente a lógica para cadastrar um paciente usando o DAO
-        return pacienteDAO.inserirNoBancoDeDados(paciente);
+        return pacienteDAO.inserirNoBancoDeDados(paciente, connectionManager);
     }
 }

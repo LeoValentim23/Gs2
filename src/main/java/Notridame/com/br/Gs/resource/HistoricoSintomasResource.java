@@ -1,10 +1,10 @@
 package Notridame.com.br.Gs.resource;
 
 import Notridame.com.br.Gs.DAO.CpfLogado;
+import Notridame.com.br.Gs.model.HistoricoSintomas;
+import Notridame.com.br.Gs.service.HistoricoMedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import Notridame.com.br.Gs.service.HistoricoService;
 
 import java.util.List;
 
@@ -13,11 +13,18 @@ import java.util.List;
 public class HistoricoSintomasResource {
 
     @Autowired
-    private HistoricoService historicoService;
+    private HistoricoMedicoService historicoMedicoService;
 
     @GetMapping
     public List<String> obterHistoricoSintomas() {
-        // Implemente a lógica para recuperar o histórico de sintomas usando o serviço
-        return historicoService.obterHistoricoSintomas(CpfLogado.getCpfUsuarioLogado());
+        // Chama o serviço para obter o histórico de sintomas
+        return historicoMedicoService.obterHistoricoSintomas(CpfLogado.getCpfUsuarioLogado());
+    }
+
+    @PostMapping
+    public String adicionarHistoricoSintomas(@RequestBody HistoricoSintomas historicoSintomas) {
+        // Implemente a lógica para adicionar o histórico de sintomas usando o serviço
+        historicoMedicoService.adicionarHistoricoSintomas(historicoSintomas);
+        return "Histórico de sintomas adicionado com sucesso!";
     }
 }
