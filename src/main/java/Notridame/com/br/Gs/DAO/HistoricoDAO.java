@@ -1,7 +1,7 @@
 package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.conexao.ConnectionManager;
-import Notridame.com.br.Gs.model.HistoricoMedico;
+import Notridame.com.br.Gs.model.Historico.HistoricoMedico;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,7 +1,7 @@
 package Notridame.com.br.Gs.DAO;
 
 import Notridame.com.br.Gs.conexao.ConnectionManager;
-import Notridame.com.br.Gs.model.Paciente;
+import Notridame.com.br.Gs.model.model.Paciente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ProcessoTriagemDAO {
 
-    private static Notridame.com.br.Gs.model.Paciente Paciente;
+    private static Notridame.com.br.Gs.model.model.Paciente Paciente;
 
     public static String obterEnderecoDoPaciente(String cpfUsuarioLogado) {
         String endereco = null;

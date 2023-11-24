@@ -1,7 +1,7 @@
 package Notridame.com.br.Gs.resource;
 
 import Notridame.com.br.Gs.DAO.CpfLogado;
-import Notridame.com.br.Gs.model.HistoricoMedico;
+import Notridame.com.br.Gs.model.Historico.HistoricoMedico;
 import Notridame.com.br.Gs.service.HistoricoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

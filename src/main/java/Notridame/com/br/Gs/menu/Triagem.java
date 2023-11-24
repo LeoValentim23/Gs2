@@ -1,8 +1,9 @@
 package Notridame.com.br.Gs.menu;
 
 import Notridame.com.br.Gs.DAO.ProcessoTriagemDAO;
+import Notridame.com.br.Gs.model.Historico.InformacoesSintoma;
+import Notridame.com.br.Gs.model.pulseira.pulseira;
 import Notridame.com.br.Gs.service.TriagemUtil;
-import Notridame.com.br.Gs.model.*;
 
 public class Triagem {
 

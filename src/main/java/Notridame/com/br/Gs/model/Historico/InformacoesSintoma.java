@@ -1,4 +1,7 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.Historico;
+
+import Notridame.com.br.Gs.model.model.Paciente;
+import Notridame.com.br.Gs.model.model.TipoSintoma;
 
 public class InformacoesSintoma {
 

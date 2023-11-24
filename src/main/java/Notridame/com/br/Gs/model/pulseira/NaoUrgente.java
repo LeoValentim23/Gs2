@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.pulseira;
 
 public class NaoUrgente extends pulseira {
     public NaoUrgente() {

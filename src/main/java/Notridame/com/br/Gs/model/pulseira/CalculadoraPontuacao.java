@@ -1,4 +1,6 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.pulseira;
+
+import Notridame.com.br.Gs.model.model.TipoSintoma;
 
 public class CalculadoraPontuacao {
 

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Notridame.com.br.Gs.DAO.HistoricoDAO;
-import Notridame.com.br.Gs.model.HistoricoMedico;
+import Notridame.com.br.Gs.model.Historico.HistoricoMedico;
 
 import java.util.List;
 

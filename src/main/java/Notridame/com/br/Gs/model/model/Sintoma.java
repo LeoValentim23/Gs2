@@ -1,5 +1,7 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.model;
 
+
+import Notridame.com.br.Gs.model.model.TipoSintoma;
 
 public class Sintoma {
     private TipoSintoma tipo;

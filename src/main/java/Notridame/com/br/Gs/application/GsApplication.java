@@ -1,7 +1,7 @@
 package Notridame.com.br.Gs.application;
 
 import Notridame.com.br.Gs.menu.Menu;
-import Notridame.com.br.Gs.model.Paciente;
+import Notridame.com.br.Gs.model.model.Paciente;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

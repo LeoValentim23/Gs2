@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.model;
 
 public enum TipoSintoma {
     DOR_DE_CABECA(1),

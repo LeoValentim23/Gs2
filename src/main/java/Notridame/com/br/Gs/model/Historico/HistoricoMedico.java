@@ -1,4 +1,4 @@
-package Notridame.com.br.Gs.model;
+package Notridame.com.br.Gs.model.Historico;
 
 public class HistoricoMedico {
 

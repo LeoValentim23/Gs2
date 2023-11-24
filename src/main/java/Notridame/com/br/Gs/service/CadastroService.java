@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Notridame.com.br.Gs.DAO.PacienteDAO;
-import Notridame.com.br.Gs.model.Paciente;
+import Notridame.com.br.Gs.model.model.Paciente;
 
 @Service
 public class CadastroService {

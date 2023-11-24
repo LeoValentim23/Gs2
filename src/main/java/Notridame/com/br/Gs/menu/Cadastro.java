@@ -2,7 +2,7 @@ package Notridame.com.br.Gs.menu;
 
 import Notridame.com.br.Gs.DAO.PacienteDAO;
 import Notridame.com.br.Gs.conexao.ConnectionManager;
-import Notridame.com.br.Gs.model.Paciente;
+import Notridame.com.br.Gs.model.model.Paciente;
 
 import java.util.Scanner;
 
